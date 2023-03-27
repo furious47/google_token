@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 // const shortid = require('shortid');
 const { google } = require('googleapis');
+const { web } = require('./client_secret_734486457800-stfa7g23b4b4aackt7s8gfs7ev0q1n8l.apps.googleusercontent.com.json');
 
 
 const oauth2client = new google.auth.OAuth2('your_client_id', 'your_client_secret', 'redirect_url')
@@ -16,13 +17,15 @@ const url = oauth2client.generateAuthUrl({
 
 console.log(url)
 
+//your redirect url path
 app.get('/auth/success', (req, res) => {
   const { code } = req.query;
   oauth2client.getToken(code)
-    .then((res) => console.log(res))
+    .then((resp) => {
+      console.log(resp)
+      res.json({ resp })
+    })
     .catch((err) => console.log(err));
-
-  res.send(res)
 })
 
 app.listen(8000, () => console.log('server is listening'))

@@ -57,7 +57,6 @@ app.listen(8000, () => console.log('server is listening'))
 //         timeZone: 'Asia/Kolkata',
 //       },
 //       attendees: [
-//         { email: 'dhanushkumar138@gmail.com' },
 //       ],
 //       reminders: {
 //         useDefault: false,
